@@ -174,4 +174,4 @@ def msgSucesso(msg):
 def msgErro(msg):
     return print(Fore.RED + msg + Style.RESET_ALL)   
 
-print(obtemDataDosistema())
+entraSistema()
