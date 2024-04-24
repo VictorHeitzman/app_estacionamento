@@ -167,7 +167,7 @@ def registraEntrada(cpf):
     placa = valores[0][0]
     modelo = valores[0][1]
 
-    cursor.execute('INSERT INTO temp(placa, modelo, data_entrada) VALUES(?,?,?)',(placa, modelo, obtemDataDosistema(),))
+    cursor.execute('INSERT INTO temp(placa, modelo, data_entrada) VALUES(?,?,?)',(placa, modelo, obtemDataDosistema()))
     conn.commit()
 
     limpaCmd()
@@ -175,7 +175,7 @@ def registraEntrada(cpf):
     
 def RegistraCliente(nome, cpf, placa, modelo):          
     cursor.execute (f"""INSERT INTO cliente(nome, cpf, placa, modelo) 
-                VALUES(?,?,?,?)""",(nome, cpf, placa, modelo))
+                VALUES(?,?,?,?)""",(nome, cpf, placa, modelo,))
     conn.commit()
 
 def listarTababela(sql, headers):
@@ -206,7 +206,7 @@ def registraSaida(placa):
         cursor.execute(f"""DELETE FROM temp WHERE placa = (?)""", (placa,))
         conn.commit()
         limpaCmd()
-        msgSucesso('Saí­da Registrada com Sucesso!')
+        msgSucesso('Saída Registrada com Sucesso!')
         menu()
 
 
@@ -225,6 +225,6 @@ def msgErro(msg):
 def obtemDataDosistema():
     date = datetime.datetime.now().strftime('%d/%m/%Y %H:%M')
     agora = datetime.datetime.strptime(date, '%d/%m/%Y %H:%M')
-    return agora
+    return str(agora)
 
-menu()
+entraSistema()
